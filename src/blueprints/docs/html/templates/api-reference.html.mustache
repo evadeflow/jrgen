@@ -231,13 +231,19 @@
                   </div>
 
                   <div class="col-4">
+                    {{#responseExample}}
                     <h5>Request example</h5>
                     <pre class="bg-light">{{{requestExample}}}</pre>
 
-                    {{#responseExample}}
                     <h5>Response example</h5>
                     <pre class="bg-light">{{{responseExample}}}</pre>
                     {{/responseExample}}
+
+                    {{^responseExample}}
+                    <h5>Example</h5>
+                    <pre class="bg-light">{{{requestExample}}}</pre>
+                    {{/responseExample}}
+
                   </div>
                 </div>
               </div>
