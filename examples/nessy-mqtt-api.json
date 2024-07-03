@@ -72,6 +72,51 @@
     "cmdserver/dms/start": {
       "description": "Starts the gaze detection demo.",
       "tags": ["cmdserver"]
+    },
+
+    "cmdserver/dms_offline/start": {
+      "description": "Starts the gaze detection demo in offline mode.",
+      "tags": ["cmdserver"]
+    },
+
+    "cmdserver/stopall": {
+      "description": "Stops all (or most?) demo processes.",
+      "tags": ["cmdserver"]
+    },
+
+    "cmdserver/fwdviper/start": {
+      "description": "Starts the ViPer demo.",
+      "tags": ["cmdserver"]
+    },
+
+    "cmdserver/sv3d/view/left": {
+      "description": "Activates the <em>left</em> surround view camera.",
+      "tags": ["cmdserver"]
+    },
+
+    "cmdserver/sv3d/view/right": {
+      "description": "Activates the <em>right</em> surround view camera.",
+      "tags": ["cmdserver"]
+    },
+
+    "cmdserver/sv3d/view/front": {
+      "description": "Activates the <em>front</em> surround view camera.",
+      "tags": ["cmdserver"]
+    },
+
+    "cmdserver/sv3d/view/rear": {
+      "description": "Activates the <em>rear</em> surround view camera.",
+      "tags": ["cmdserver"]
+    },
+
+    "cmdserver/sv3d/view/forward": {
+      "description": "Activates the <em>forward</em> surround view camera.",
+      "tags": ["cmdserver"]
+    },
+
+    "cmdserver/android/reboot": {
+      "description": "Forces a reboot of Nessy's Android subsystem.",
+      "tags": ["cmdserver"]
     }
   }
 }
