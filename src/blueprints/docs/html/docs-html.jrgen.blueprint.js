@@ -25,7 +25,7 @@ module.exports = (schema) => {
       methods: Object.keys(schema.methods).map((key) => {
         const methodSchema = schema.methods[key];
         return {
-          id: key.replace(/\./g, "_"),
+          id: key.replace(/\//g, "_"),
           name: key,
           summary: methodSchema.summary,
           description: utils.normalizeMultiLineString(
