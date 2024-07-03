@@ -104,6 +104,28 @@
       }
     },
 
+    "cmdserver/scripts/run": {
+      "description": "Runs the script with the given name. An error will be returned by this API call only if the script does not exist. The output from running it be obtained by subscribing to topic 'cmdserver/scripts/run/&lt;name&gt;/output'.",
+      "tags": ["cmdserver"],
+      "params": {
+        "type": "string",
+        "description": "Name of script to run",
+        "examples": ["Peugeot"],
+      },
+      "result": {
+        "type": "string",
+        "description": "Returns OK if script exists",
+        "examples": ["OK"],
+      },
+      "errors": [
+        {
+          "description": "Script not found",
+          "code": -32001,
+          "message": "ScriptNotFound"
+        }
+      ]
+    },
+
     "cmdserver/dms/start": {
       "description": "Starts the gaze detection demo.",
       "tags": ["cmdserver"]
