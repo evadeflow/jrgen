@@ -28,6 +28,33 @@
           "maximum": 29
         }
       ]
+    },
+    "ScriptMetaData": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "Script metadata",
+        "properties": {
+          "name": {
+            "type": "string",
+            "examples": [
+              "Peugeot",
+              "Table-top",
+              "Wagoneer"
+            ],
+            "minLength": 1
+          },
+          "description": {
+            "type": "string",
+            "examples": [
+              "Configures Nessy for Peugeot demo vehicle.",
+              "Configures Nessy for table-top demo mode.",
+              "Configures Nessy for Wagoneer demo vehicle"
+            ],
+            "minLength": 1
+          }
+        }
+      }
     }
   },
   "methods": {
@@ -67,6 +94,14 @@
           "message": "InvalidAgainCode"
         }
       ]
+    },
+
+    "cmdserver/scripts/get": {
+      "description": "Returns a list of available scripts. A given script may be run by publishing a message to topic 'cmdserver/scripts/run/&lt;name&gt;'.",
+      "tags": ["cmdserver"],
+      "result": {
+        "$ref": "#/definitions/ScriptMetaData"
+      }
     },
 
     "cmdserver/dms/start": {
