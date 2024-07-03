@@ -54,25 +54,19 @@ exports.gatherBlueprints = () => {
 };
 
 exports.generateRequestExample = (methodName, paramsSchema) => {
-  return JSON.stringify(
-    {
-      jsonrpc: "2.0",
-      id: "1234567890",
-      method: methodName,
-      params: exports.generateExample(paramsSchema),
-    },
-    null,
-    2
-  );
+  var params = exports.generateExample(paramsSchema)
+
+  payload = ""
+  if (params) {
+    payload = "\npayload: " + JSON.stringify(params, null, 2)
+  }
+
+  return "topic: " + methodName + payload;
 };
 
 exports.generateResponseExample = (resultSchema) => {
   return JSON.stringify(
-    {
-      jsonrpc: "2.0",
-      id: "1234567890",
-      result: exports.generateExample(resultSchema),
-    },
+    exports.generateExample(resultSchema),
     null,
     2
   );
