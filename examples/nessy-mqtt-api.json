@@ -1,0 +1,77 @@
+{
+  "$schema": "https://rawgit.com/mzernetsch/jrgen/master/jrgen-spec.schema.json",
+  "jrgen": "1.2",
+  "jsonrpc": "2.0",
+  "info": {
+    "title": "Nessy MQTT API",
+    "description": [
+      "This API is used to control various demo functions of the <em>Nessy</em> platform.",
+    ],
+    "version": "1.0",
+  },
+  "definitions": {
+    "gain": {
+      "type": "array",
+      "items": [
+        {
+          "description": "Analog gain value",
+          "examples": [1.78],
+          "type": "number",
+          "minimum": 1.0,
+          "maximum": 16.0
+        },
+        {
+          "description": "AGAIN_CODE",
+          "examples": [14],
+          "type": "number",
+          "minimum": 0,
+          "maximum": 29
+        }
+      ]
+    }
+  },
+  "methods": {
+    "camera/gain/get": {
+      "description": "Returns the current IR gain and AGAIN_CODE values.",
+      "tags": ["camera"],
+      "result": {
+        "$ref": "#/definitions/gain"
+      }
+    },
+    "camera/gain/set": {
+      "description": "Set the current IR gain using the given AGAIN_CODE and returns the corresponding analog gain value.",
+      "tags": ["camera"],
+      "params": {
+        "type": "number",
+        "description": "AGAIN_CODE",
+        "examples": [24],
+        "minimum": 0,
+        "maximum": 29
+      },
+      "result": {
+        "description": "Analog gain value",
+        "examples": [4.0],
+        "type": "number",
+        "minimum": 1.0,
+        "maximum": 16.0,
+      },
+      "errors": [
+        {
+          "description": "ccidbgr command failed",
+          "code": -32000,
+          "message": "CcidBgrFailed"
+        },
+        {
+          "description": "invalid AGAIN_CODE",
+          "code": -32602,
+          "message": "InvalidAgainCode"
+        }
+      ]
+    },
+
+    "cmdserver/dms/start": {
+      "description": "Starts the gaze detection demo.",
+      "tags": ["cmdserver"]
+    }
+  }
+}
