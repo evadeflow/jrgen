@@ -126,6 +126,37 @@
       ]
     },
 
+    "dms/image/capture": {
+      "description": "Capture an image from the DMS camera and return a download URL for it.",
+      "tags": ["dms"],
+      "result": {
+        "type": "string",
+        "description": "Download URL for captured image",
+        "examples": ["http://qnx.local:7777/image-1720199651.png"],
+      },
+    },
+
+    "csr/detect/start": {
+      "description": "Commands the cabin-sensing radar app to start publishing in-cab radar data",
+      "tags": ["csr"]
+    },
+
+    "csr/detect/stop": {
+      "description": "Commands the cabin-sensing radar app to stop publishing in-cab radar data",
+      "tags": ["csr"]
+    },
+
+    "csr/echo/start": {
+      "description": "Commands the cabin-sensing radar app to start echoing raw radar data to the console",
+      "tags": ["csr"]
+    },
+
+    "csr/echo/stop": {
+      "description": "Commands the cabin-sensing radar app to stop echoing raw radar radar data to the console",
+      "tags": ["csr"]
+    },
+
+
     "cmdserver/dms/start": {
       "description": "Starts the gaze detection demo.",
       "tags": ["cmdserver"]
