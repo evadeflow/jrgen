@@ -4,10 +4,8 @@
   "jsonrpc": "2.0",
   "info": {
     "title": "Nessy MQTT API",
-    "description": [
-      "This API is used to control various demo functions of the <em>Nessy</em> platform.",
-    ],
-    "version": "1.0",
+    "description": "This API is used to control various demo functions of the <em>Nessy</em> platform.",
+    "version": "1.0"
   },
   "definitions": {
     "gain": {
@@ -58,6 +56,36 @@
     }
   },
   "methods": {
+    "androidsystem/clustersimulation/info": {
+      "description": "Activate/deactivate the cluster animation",
+      "tags": ["androidsystem"],
+      "params": {
+        "type": "boolean",
+        "description": "Activates cluster animation (true), or deactivates it (false)",
+        "examples": [true, false]
+      }
+    },
+
+    "androidsystem/personalisation/info": {
+      "description": "Activate/deactivate night mode",
+      "tags": ["androidsystem"],
+      "params": {
+        "type": "boolean",
+        "description": "Activates night mode (true), or deactivates it (false)",
+        "examples": [true, false]
+      }
+    },
+
+    "androidsystem/region/info": {
+      "description": "Sets units/locale to North America (NA) or Europe",
+      "tags": ["androidsystem"],
+      "params": {
+        "type": "string",
+        "enum": ["Europe", "NA"],
+        "description": "Locale name",
+        "examples": ["Europe", "NA"]
+      }
+    },
     "camera/gain/get": {
       "description": "Returns the current IR gain and AGAIN_CODE values.",
       "tags": ["camera"],
@@ -80,7 +108,7 @@
         "examples": [4.0],
         "type": "number",
         "minimum": 1.0,
-        "maximum": 16.0,
+        "maximum": 16.0
       },
       "errors": [
         {
@@ -94,6 +122,26 @@
           "message": "InvalidAgainCode"
         }
       ]
+    },
+
+    "cmdserver/android/reboot": {
+      "description": "Forces a reboot of Nessy's Android subsystem.",
+      "tags": ["cmdserver"]
+    },
+
+    "cmdserver/dms/start": {
+      "description": "Starts the gaze detection demo.",
+      "tags": ["cmdserver"]
+    },
+
+    "cmdserver/dms_offline/start": {
+      "description": "Starts the gaze detection demo in offline mode.",
+      "tags": ["cmdserver"]
+    },
+
+    "cmdserver/fwdviper/start": {
+      "description": "Starts the ViPer demo.",
+      "tags": ["cmdserver"]
     },
 
     "cmdserver/scripts/get": {
@@ -110,12 +158,12 @@
       "params": {
         "type": "string",
         "description": "Name of script to run",
-        "examples": ["Peugeot"],
+        "examples": ["Peugeot"]
       },
       "result": {
         "type": "string",
         "description": "Returns OK if script exists",
-        "examples": ["OK"],
+        "examples": ["OK"]
       },
       "errors": [
         {
@@ -126,14 +174,35 @@
       ]
     },
 
-    "dms/image/capture": {
-      "description": "Capture an image from the DMS camera and return a download URL for it.",
-      "tags": ["dms"],
-      "result": {
-        "type": "string",
-        "description": "Download URL for captured image",
-        "examples": ["http://qnx.local:7777/image-1720199651.png"],
-      },
+    "cmdserver/stopall": {
+      "description": "Stops all (or most?) demo processes.",
+      "tags": ["cmdserver"]
+    },
+
+    "cmdserver/sv3d/view/forward": {
+      "description": "Activates the <em>forward</em> surround view camera.",
+      "tags": ["cmdserver"]
+    },
+
+    "cmdserver/sv3d/view/front": {
+      "description": "Activates the <em>front</em> surround view camera.",
+      "tags": ["cmdserver"]
+    },
+
+
+    "cmdserver/sv3d/view/left": {
+      "description": "Activates the <em>left</em> surround view camera.",
+      "tags": ["cmdserver"]
+    },
+
+    "cmdserver/sv3d/view/rear": {
+      "description": "Activates the <em>rear</em> surround view camera.",
+      "tags": ["cmdserver"]
+    },
+
+    "cmdserver/sv3d/view/right": {
+      "description": "Activates the <em>right</em> surround view camera.",
+      "tags": ["cmdserver"]
     },
 
     "csr/detect/start": {
@@ -156,55 +225,15 @@
       "tags": ["csr"]
     },
 
-
-    "cmdserver/dms/start": {
-      "description": "Starts the gaze detection demo.",
-      "tags": ["cmdserver"]
-    },
-
-    "cmdserver/dms_offline/start": {
-      "description": "Starts the gaze detection demo in offline mode.",
-      "tags": ["cmdserver"]
-    },
-
-    "cmdserver/stopall": {
-      "description": "Stops all (or most?) demo processes.",
-      "tags": ["cmdserver"]
-    },
-
-    "cmdserver/fwdviper/start": {
-      "description": "Starts the ViPer demo.",
-      "tags": ["cmdserver"]
-    },
-
-    "cmdserver/sv3d/view/left": {
-      "description": "Activates the <em>left</em> surround view camera.",
-      "tags": ["cmdserver"]
-    },
-
-    "cmdserver/sv3d/view/right": {
-      "description": "Activates the <em>right</em> surround view camera.",
-      "tags": ["cmdserver"]
-    },
-
-    "cmdserver/sv3d/view/front": {
-      "description": "Activates the <em>front</em> surround view camera.",
-      "tags": ["cmdserver"]
-    },
-
-    "cmdserver/sv3d/view/rear": {
-      "description": "Activates the <em>rear</em> surround view camera.",
-      "tags": ["cmdserver"]
-    },
-
-    "cmdserver/sv3d/view/forward": {
-      "description": "Activates the <em>forward</em> surround view camera.",
-      "tags": ["cmdserver"]
-    },
-
-    "cmdserver/android/reboot": {
-      "description": "Forces a reboot of Nessy's Android subsystem.",
-      "tags": ["cmdserver"]
+    "dms/image/capture": {
+      "description": "Capture an image from the DMS camera and return a download URL for it.",
+      "tags": ["dms"],
+      "result": {
+        "type": "string",
+        "description": "Download URL for captured image",
+        "examples": ["http://qnx.local:7777/image-1720199651.png"]
+      }
     }
   }
 }
+"dms/image/capture"
