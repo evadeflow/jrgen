@@ -58,18 +58,30 @@ exports.generateRequestExample = (methodName, paramsSchema) => {
 
   payload = ""
   if (params) {
-    payload = "\npayload: " + JSON.stringify(params, null, 2)
+    payload = "\npayload: "
+    if (typeof(params) == "string") {
+      payload += params
+    }
+    else {
+        payload += JSON.stringify(params, null, 2)
+    }
   }
 
   return "topic: " + methodName + payload;
 };
 
 exports.generateResponseExample = (resultSchema) => {
-  return JSON.stringify(
-    exports.generateExample(resultSchema),
-    null,
-    2
-  );
+  params = exports.generateExample(resultSchema)
+  if (typeof(params) == "string") {
+    return params;
+  }
+  else {
+    return JSON.stringify(
+      exports.generateExample(resultSchema),
+      null,
+      2
+    );
+  }
 };
 
 exports.generateExample = (schema) => {
